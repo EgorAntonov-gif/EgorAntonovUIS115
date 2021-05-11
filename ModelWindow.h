@@ -1,0 +1,210 @@
+#pragma once
+#include <string>
+
+
+class ModelWindow
+{
+private:
+
+
+	class RGB
+	{
+	private:
+		/**
+		*\brief красный цвет
+		*/
+		int red;
+
+		/**
+		*\brief зелёный цвет
+		*/
+		int green;
+
+		/**
+		*\brief синий цвет
+		*/
+		int blue;
+
+	public:
+		/**
+		*\brief Конструктор по умолчанию
+		*/
+		RGB()
+		{
+
+		}
+
+		/**
+		*\brief Конструктор с параметрами
+		*\param  red красный цвет
+		*\param green зелёный цвет
+		*\param blue синий цвет
+		*/
+		RGB(int red, int green, int blue)
+		{
+
+		}
+
+	};
+
+
+
+	/**
+	*\brief Заголовок окна
+	*/
+	std::string window_title;
+	/**
+	*\brief Координата x левого верхнего угла
+	*/
+	unsigned int coordinate_x0;
+	/**
+	*\brief Координата y левого верхнего угла
+	*/
+	unsigned int coordinate_y0;
+	/**
+*\brief Вертикальный размер
+*/
+	unsigned int vertical_size;
+	/**
+	*\brief Горизонтальный размер
+	*/
+	unsigned int horizontal_size;
+	/**
+	*\brief Цвет окна
+	*/
+	RGB colour;
+	/**
+	*\brief Видимость/невидимость окна
+	*/
+	bool visibility;
+	/**
+	*\brief Окно с рамкой/без рамки
+	*/
+	bool framed;
+	/**
+	*\brief Высота дисплея
+	*/
+	unsigned int display_height;
+	/**
+	*\brief Ширина дисплея
+	*/
+	unsigned int display_length;
+
+
+	/**
+	*\brief Сеттер для проверки размеров окна
+	*\param window_title Заголовок окна
+	*\param coordinate_x0 Координата x левого верхнего угла
+	*\param coordinate_y0 Координата y левого верхнего угла
+	*\param vertical_size  Вертикальный размер
+	*\param horizontal_size Горизонтальный размер
+	*\param colour Цвет окна
+	*\param bool is_visibile Видимость/невидимость окна
+	*\param bool has_frame Окно с рамкой/без рамки
+	*\param display_height Высота дисплея
+	*\param display_length Ширина дисплея
+	*/
+	void set_window(std::string window_title, unsigned int coordinate_x0, unsigned int coordinate_y0, unsigned int vertical_size, unsigned int horizontal_size, RGB colour, bool visibility, bool framed, unsigned int display_height, unsigned int display_length);
+public:
+
+	/**
+	*\brief Конструктор с параметрами
+	*\param window_title Заголовок окна
+	*\param coordinate_x0 Координата x левого верхнего угла
+	*\param coordinate_y0 Координата y левого верхнего угла
+	*\param vertical_size  Вертикальный размер
+	*\param horizontal_size Горизонтальный размер
+	*\param colour Цвет окна
+	*\param bool visibility Видимость/невидимость окна
+	*\param bool framed Окно с рамкой/без рамки
+	*\param display_height Высота дисплея
+	*\param display_length Ширина дисплея
+	*/
+	explicit ModelWindow(std::string window_title, int coordinate_x0, int coordinate_y0, int vertical_size, int horizontal_size, std::string colour, bool visibility, bool framed, int display_height, int display_length);
+
+
+	/**
+	*\brief Конструктор копирования
+	*/
+	ModelWindow(const  ModelWindow& other)
+	{
+
+	}
+
+	/**
+	*\brief Конструктор присвоения
+	*/
+	ModelWindow& operator=(const  ModelWindow&) = default;
+
+	/**
+	*\brief деструктор по умолчанию
+	*/
+	~ModelWindow() = default;
+
+	/**
+	*\brief  Метод, возвращающий вертикальное передвижение
+	*\param coordinate_x0 Координата x левого верхнего угла
+	*\param coordinate_y0 Координата y левого верхнего угла
+	*/
+	int get_vertical_movement(int coordinate_x0, int coordinate_y0);
+
+	/**
+	*\brief  Метод, возвращающий горизонтальное передвижение
+	*\param coordinate_x0 Координата x левого верхнего угла
+	*\param coordinate_y0 Координата y левого верхнего угла
+	*/
+	int get_horizontal_movement(int coordinate_x0, int coordinate_y0);
+
+
+	/**
+	*\brief  Метод, возвращающий изменение вертикального размера
+	*\param coordinate_x0 Координата x левого верхнего угла
+	*\param coordinate_y0 Координата y левого верхнего угла
+	*\param vertical_size  Вертикальный размер
+	*/
+	int get_change_of_vertical_size(int coordinate_x0, int coordinate_y0, int vertical_size);
+
+
+	/**
+	*\brief  Метод, возвращающий изменение горизонтального размера
+	*\param coordinate_x0 Координата x левого верхнего угла
+	*\param coordinate_y0 Координата y левого верхнего угла
+	*\param horizontal_size Горизонтальный размер
+	*/
+	int get_change_of_horizontal_size(int coordinate_x0, int coordinate_y0, int horizontal_size);
+
+	/**
+	*\brief  Метод, возвращающий изменение цвета
+	*\param colour Цвет окна
+	*/
+	std::string get_change_of_colour(std::string colour);
+
+
+	/**
+	*\brief  Метод, возвращающий изменение цвета
+	*\param colour Цвет окна
+	*/
+	bool get_change_of_visibility(bool visibility);
+
+
+	/**
+	*\brief  Метод, возвращающий изменение состояния (с рамкой/без рамки)
+	*\param bool framed Окно с рамкой/без рамки
+	*/
+	bool get_change_of_framed(bool framed);
+
+
+	/**
+	*\brief  Метод, возвращающий состояние (видимое/невидимое)
+	*\param bool visibility Видимость/невидимость окна
+	*/
+	bool get_visibility(bool visibility);
+
+
+
+	/**
+	*\brief  Метод, возвращающий состояние (с рамкой/без рамки)
+	*\param bool framed Окно с рамкой/без рамки
+	*/
+	bool get_framed(bool framed);
+};
