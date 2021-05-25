@@ -13,17 +13,24 @@ private:
 		/**
 		*\brief красный цвет
 		*/
-		int red;
+		unsigned int red;
 
 		/**
 		*\brief зелёный цвет
 		*/
-		int green;
+		unsigned int green;
 
 		/**
 		*\brief синий цвет
 		*/
-		int blue;
+		unsigned int blue;
+		void set_colors(unsigned int red, unsigned int green, unsigned int blue) {
+			if (red <= 255 && green <= 255 && blue <= 255) {
+				this->red = red;
+				this->green = green;
+				this->blue = blue;
+			}
+		}
 
 	public:
 		/**
@@ -40,11 +47,11 @@ private:
 		*\param green зелёный цвет
 		*\param blue синий цвет
 		*/
-		RGB(int red, int green, int blue)
+		RGB(unsigned int red, unsigned int green, unsigned int blue)
 		{
-
+			set_colors(red, green, blue)
 		}
-
+		RGB& operator=(const  RGB&) = default;
 	};
 
 
@@ -104,7 +111,7 @@ private:
 	*\param display_height Высота дисплея
 	*\param display_length Ширина дисплея
 	*/
-	void set_window(std::string window_title, unsigned int coordinate_x0, unsigned int coordinate_y0, unsigned int vertical_size, unsigned int horizontal_size, RGB colour, bool visibility, bool framed, unsigned int display_height, unsigned int display_length);
+	void set_window(std::string& window_title, unsigned int coordinate_x0, unsigned int coordinate_y0, unsigned int vertical_size, unsigned int horizontal_size, RGB colour, bool visibility, bool framed, unsigned int display_height, unsigned int display_length);
 public:
 
 	/**
@@ -120,7 +127,7 @@ public:
 	*\param display_height Высота дисплея
 	*\param display_length Ширина дисплея
 	*/
-	explicit ModelWindow(std::string window_title, int coordinate_x0, int coordinate_y0, int vertical_size, int horizontal_size, std::string colour, bool visibility, bool framed, int display_height, int display_length);
+	explicit ModelWindow(std::string& window_title, int coordinate_x0, int coordinate_y0, int vertical_size, int horizontal_size, std::string& colour, bool visibility, bool framed, int display_height, int display_length);
 
 
 	/**
@@ -140,6 +147,7 @@ public:
 	*\brief деструктор по умолчанию
 	*/
 	~ModelWindow() = default;
+
 
 	/**
 	*\brief  Метод, возвращающий вертикальное передвижение
@@ -177,34 +185,26 @@ public:
 	*\brief  Метод, возвращающий изменение цвета
 	*\param colour Цвет окна
 	*/
-	std::string get_change_of_colour(std::string colour);
-
-
-	/**
-	*\brief  Метод, возвращающий изменение цвета
-	*\param colour Цвет окна
-	*/
-	bool get_change_of_visibility(bool visibility);
+	std::string get_change_of_colour(std::string& colour);
 
 
 	/**
 	*\brief  Метод, возвращающий изменение состояния (с рамкой/без рамки)
 	*\param bool framed Окно с рамкой/без рамки
 	*/
-	bool get_change_of_framed(bool framed);
+	bool is_changing_of_framed(bool framed);
 
 
 	/**
 	*\brief  Метод, возвращающий состояние (видимое/невидимое)
 	*\param bool visibility Видимость/невидимость окна
 	*/
-	bool get_visibility(bool visibility);
-
+	bool is_visibility(bool visibility);
 
 
 	/**
 	*\brief  Метод, возвращающий состояние (с рамкой/без рамки)
 	*\param bool framed Окно с рамкой/без рамки
 	*/
-	bool get_framed(bool framed);
+	bool is_framed(bool framed);
 };
