@@ -4,13 +4,13 @@ using namespace std;
 
 void Alcohol::set_strength_drink(double strength_drink)
 {
-	if (strength_drink > 0 && strength_drink <= 96)
+	if (strength_drink > 0 && strength_drink <= max_strenght)
 	{
 		this->strength_drink = strength_drink;
 	}
 	else
 	{
-		throw invalid_argument{ "Неверная крепость напитка" };
+		throw invalid_argument{ "РќРµРІРµСЂРЅР°СЏ РєСЂРµРїРѕСЃС‚СЊ РЅР°РїРёС‚РєР°" };
 	}
 }
 void Alcohol::set_new_strength_drink(double strength_drink)

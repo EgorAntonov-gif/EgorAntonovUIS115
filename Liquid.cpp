@@ -8,7 +8,7 @@ void Liquid::set_density(double density)
 	}
 	else
 	{
-		throw invalid_argument{ "Плотность должна быть больше нуля" };
+		throw invalid_argument{ "С•Р»РѕС‚РЅРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»В¤" };
 	}
 }
 Liquid::Liquid()
