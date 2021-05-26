@@ -24,13 +24,7 @@ private:
 		*\brief синий цвет
 		*/
 		unsigned int blue;
-		void set_colors(unsigned int red, unsigned int green, unsigned int blue) {
-			if (red <= 255 && green <= 255 && blue <= 255) {
-				this->red = red;
-				this->green = green;
-				this->blue = blue;
-			}
-		}
+		void set_colors(unsigned int red, unsigned int green, unsigned int blue);
 
 	public:
 		/**
@@ -47,10 +41,7 @@ private:
 		*\param green зелёный цвет
 		*\param blue синий цвет
 		*/
-		RGB(unsigned int red, unsigned int green, unsigned int blue)
-		{
-			set_colors(red, green, blue)
-		}
+		RGB(const unsigned int red, const unsigned int green, const unsigned int blue);
 		RGB& operator=(const  RGB&) = default;
 	};
 
@@ -111,7 +102,7 @@ private:
 	*\param display_height Высота дисплея
 	*\param display_length Ширина дисплея
 	*/
-	void set_window(std::string& window_title, unsigned int coordinate_x0, unsigned int coordinate_y0, unsigned int vertical_size, unsigned int horizontal_size, RGB colour, bool visibility, bool framed, unsigned int display_height, unsigned int display_length);
+	void set_window(const unsigned int vertical_size, const unsigned int horizontal_size, const unsigned int display_height, const unsigned int display_length);
 public:
 
 	/**
@@ -127,16 +118,13 @@ public:
 	*\param display_height Высота дисплея
 	*\param display_length Ширина дисплея
 	*/
-	explicit ModelWindow(std::string& window_title, int coordinate_x0, int coordinate_y0, int vertical_size, int horizontal_size, std::string& colour, bool visibility, bool framed, int display_height, int display_length);
+	explicit ModelWindow(std::string& window_title, int coordinate_x0, int coordinate_y0, int vertical_size, int horizontal_size, unsigned int red, const unsigned int green, const unsigned int blue, bool visibility, bool framed, int display_height, int display_length);
 
 
 	/**
 	*\brief Конструктор копирования
 	*/
-	ModelWindow(const  ModelWindow& other)
-	{
-
-	}
+	ModelWindow(const  ModelWindow& other) = default;
 
 	/**
 	*\brief Конструктор присвоения
@@ -154,14 +142,14 @@ public:
 	*\param coordinate_x0 Координата x левого верхнего угла
 	*\param coordinate_y0 Координата y левого верхнего угла
 	*/
-	int get_vertical_movement(int coordinate_x0, int coordinate_y0);
+	void set_vertical_movement(const unsigned int coordinate_y0);
 
 	/**
 	*\brief  Метод, возвращающий горизонтальное передвижение
 	*\param coordinate_x0 Координата x левого верхнего угла
 	*\param coordinate_y0 Координата y левого верхнего угла
 	*/
-	int get_horizontal_movement(int coordinate_x0, int coordinate_y0);
+	void set_horizontal_movement(const unsigned int coordinate_x0);
 
 
 	/**
@@ -170,7 +158,7 @@ public:
 	*\param coordinate_y0 Координата y левого верхнего угла
 	*\param vertical_size  Вертикальный размер
 	*/
-	int get_change_of_vertical_size(int coordinate_x0, int coordinate_y0, int vertical_size);
+	void set_change_of_vertical_size(const unsigned int vertical_size);
 
 
 	/**
@@ -179,13 +167,13 @@ public:
 	*\param coordinate_y0 Координата y левого верхнего угла
 	*\param horizontal_size Горизонтальный размер
 	*/
-	int get_change_of_horizontal_size(int coordinate_x0, int coordinate_y0, int horizontal_size);
+	void set_change_of_horizontal_size(const unsigned int horizontal_size);
 
 	/**
 	*\brief  Метод, возвращающий изменение цвета
 	*\param colour Цвет окна
 	*/
-	std::string get_change_of_colour(std::string& colour);
+	void set_change_of_colour(std::string & colour_red, std::string & colour_green, std::string & colour_blue);
 
 
 	/**
